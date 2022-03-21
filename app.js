@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express()
 
-// Middleware functions 
-app.use((req, res , next) => {
-    res.status(200).json({
-        message: "Server is working"
-    })
-})
+// importing productRoutes 
+const productRoutes = require('./routes/products');
+const orderRoutes = require("./routes/orders")
 
+// Application Routes
+app.use('/products', productRoutes)
+app.use('/orders', orderRoutes)
 module.exports = app;
