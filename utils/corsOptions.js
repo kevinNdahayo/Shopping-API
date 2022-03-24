@@ -1,7 +1,7 @@
 const cors = require('cors')
 
 const corsOptions = {
-  origin: 'http://mackeefy.netlify.app',
+  origin: '*',
   optionsSuccessStatus: 200
 }
 
