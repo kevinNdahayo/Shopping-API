@@ -20,6 +20,7 @@ function getProductsDetailsMessage(req, res){
 function updatingProductsMessage(req, res) {
     const id = req.params.productId;
     const updatedProductDetails = products[id]
+    products.splice(updatedProductIndex, 1)
     res.status(200).json({
         message: "Updating product",
         updatedProduct: updatedProductDetails
@@ -28,8 +29,14 @@ function updatingProductsMessage(req, res) {
 
 
  function deleteProductsMessage(req, res) {
+     const id = req.params.productId
+     const productToDelete = products[id]
+     const deleteProductIndex = products.indexOf(productToDelete)
+     products.splice(deleteProductIndex, 1)
     res.status(200).json({
-        "message": "Deleted the product"
+        message: "Deleted the product",
+        deletedProduct: productToDelete,
+        remainingProducts: products
     })
 }
 
