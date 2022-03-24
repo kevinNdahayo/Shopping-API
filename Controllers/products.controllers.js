@@ -1,27 +1,28 @@
+const products = require("../Models/product.model");
+
 function getProductsMessage(req, res) {
     res.status(200).json({
-        "message": "Handling GET request on products"
+        message: "Getting Products",
+        products: products
     })
 }
 
 function getProductsDetailsMessage(req, res){
    const id = req.params.productId;
-   if(id === "special") {
-       res.status(200).json({
-           message: "You discovered the special Id"
-       })
-   } 
-   else {
+   const individualProduct = products[id]
     res.status(200).json({
-        message: "You passed and Id"
+        message: "Getting single product",
+        product: individualProduct
     })
-   }
 }
 
 
 function updatingProductsMessage(req, res) {
+    const id = req.params.productId;
+    const updatedProductDetails = products[id]
     res.status(200).json({
-        "message": "Updating the product"
+        message: "Updating product",
+        updatedProduct: updatedProductDetails
     })
 }
 
